@@ -45,7 +45,8 @@ RUN php artisan key:generate --force
 RUN php artisan optimize
 
 # Permissions pour le stockage
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Exposition du port
 EXPOSE 80
