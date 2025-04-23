@@ -48,8 +48,15 @@ RUN php artisan optimize
 RUN chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Rendre le script de démarrage exécutable
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 # Exposition du port
 EXPOSE 80
 
 # Démarrage des services
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+
+# Démarrage des services avec notre script personnalisé
+CMD ["/start.sh"]
