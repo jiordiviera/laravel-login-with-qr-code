@@ -44,6 +44,10 @@ RUN php artisan key:generate --force
 # Optimisation pour la production
 RUN php artisan optimize
 
+# Création explicite du répertoire de logs
+RUN mkdir -p /var/www/html/storage/logs
+RUN touch /var/www/html/storage/logs/laravel.log
+
 # Permissions pour le stockage
 RUN chmod -R 777 /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
@@ -54,7 +58,6 @@ RUN chmod +x /start.sh
 
 # Exposition du port
 EXPOSE 80
-
 # Démarrage des services
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
