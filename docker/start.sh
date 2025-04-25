@@ -5,7 +5,7 @@ echo "🚀 Démarrage du conteneur Laravel..."
 # Attendre que MySQL soit prêt
 echo "⏳ Attente de la base de données..."
 
-until mysqladmin ping -h db --silent; do
+until mysql -h db -u root -p$MYSQL_ROOT_PASSWORD -e 'SELECT 1'; do
   echo "⚠️  En attente de MySQL à db:3306..."
   sleep 2
 done
