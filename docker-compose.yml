@@ -10,7 +10,7 @@ services:
       DB_HOST: db
       DB_PORT: 3306
       DB_DATABASE: laravel_qr
-      DB_USERNAME: laravel
+      DB_USERNAME: root
       DB_PASSWORD: secret
     volumes:
       - ./:/var/www/html
@@ -26,11 +26,12 @@ services:
     image: mysql:8.0
     container_name: laravel-qr-db
     restart: unless-stopped
+    ports:
+     - "3306:3306"
     environment:
-      MYSQL_DATABASE: laravel_qr
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_PASSWORD: secret
-      MYSQL_USER: laravel
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'laravel'
+      MYSQL_PASS: 'password'
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
