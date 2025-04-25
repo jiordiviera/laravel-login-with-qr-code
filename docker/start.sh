@@ -5,8 +5,7 @@ echo "🚀 Démarrage du conteneur Laravel..."
 # Attendre que MySQL soit prêt
 echo "⏳ Attente de la base de données..."
 
-until nc -z -v -w30 db 3306
-do
+until mysqladmin ping -h db --silent; do
   echo "⚠️  En attente de MySQL à db:3306..."
   sleep 2
 done
