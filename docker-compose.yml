@@ -19,16 +19,18 @@ services:
       - laravel-qr-network
     depends_on:
       - db
+    ports:
+      - "8000:80"
 
   db:
     image: mysql:8.0
     container_name: laravel-qr-db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_DATABASE: laravel_qr
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_PASSWORD: secret
+      MYSQL_USER: laravel
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
