@@ -30,10 +30,9 @@ services:
      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'laravel_qr'
       MYSQL_USER: 'laravel'
-      MYSQL_PASS: 'password'
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+      MYSQL_PASSWORD: 'password'
     volumes:
       - mysql-data:/var/lib/mysql
     networks:
